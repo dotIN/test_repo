@@ -29,3 +29,6 @@ require 'rake/testtask'
   task :all_tests => [:unit, :regression, :api, :perf] do
     puts "Looks Great!! ,Lets Deploy "
   end
+
+# Default
+task default: ['regression','perf']
