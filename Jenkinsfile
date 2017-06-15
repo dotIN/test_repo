@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh "rake "
+                //sh "rake "
             }
         }
         stage('Deploy') {
