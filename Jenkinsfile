@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'git rev-parse HEAD > commit_id'
                 get_commit_id()
-                echo "Deploying...." 
+                echo "Deploying.... $commit" 
                 tryHTTP()
             }
         }
