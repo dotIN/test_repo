@@ -20,6 +20,9 @@ pipeline {
             }
         }
     }
+
+}
+
    def  tryHTTP() {
    def get = new URL("https://httpbin.org/get").openConnection();
    def getRC = get.getResponseCode();
@@ -28,4 +31,3 @@ pipeline {
        println(get.getInputStream().getText());
    }
   }
-}
