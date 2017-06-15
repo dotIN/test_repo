@@ -17,7 +17,9 @@ pipeline {
             steps {
                 sh 'git rev-parse HEAD > commit_id'
                 get_commit_id()
-                env.COMMIT = readFile 'commit_id'
+                script {
+                  env.COMMIT = readFile 'commit_id'
+                }
                 echo "Deploying.... ${env.COMMIT}" 
                 tryHTTP()
             }
