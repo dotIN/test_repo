@@ -16,13 +16,17 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'git rev-parse HEAD > commit_id'
-                def commit = readFile('commit_id').trim() 
                 echo "Deploying....  - $GIT_COMMIT"
                 tryHTTP()
             }
         }
     }
 
+}
+
+def get_commit_id() {
+  def commit = readFile('commit_id').trim() 
+  println(commit);
 }
 
 def  tryHTTP() {
