@@ -15,7 +15,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo "Deploying.... $commit - $GIT_COMMIT"
+                sh 'git rev-parse HEAD > commit_id'
+                def commit = readFile('commit_id').trim() 
+                echo "Deploying....  - $GIT_COMMIT"
                 tryHTTP()
             }
         }
