@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying.... $commit - $GIT_COMMIT'
+                echo "Deploying.... $commit - $GIT_COMMIT"
                 tryHTTP()
             }
         }
