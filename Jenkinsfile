@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying.... $commit - $GIT_COMMIT'
                 tryHTTP()
             }
         }
@@ -23,11 +23,11 @@ pipeline {
 
 }
 
-   def  tryHTTP() {
+def  tryHTTP() {
    def get = new URL("https://httpbin.org/get").openConnection();
    def getRC = get.getResponseCode();
    println(getRC);
    if(getRC.equals(200)) {
-       println(get.getInputStream().getText());
+     println(get.getInputStream().getText());
    }
-  }
+}
