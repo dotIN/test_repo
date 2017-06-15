@@ -26,8 +26,9 @@ pipeline {
 }
 
 def get_commit_id() {
-  def commit = readFile('commit_id').trim() 
+  def commit = readFile('commit_id').trim();
   println(commit);
+  return this
 }
 
 def  tryHTTP() {
