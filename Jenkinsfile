@@ -25,7 +25,12 @@ pipeline {
             }
         }
     }
-
+   post { 
+        always { 
+            echo 'I will always execute ' 
+            echo 'I will always execute, am I first !! ' 
+        }
+    }
 }
 
 def get_commit_id() {
