@@ -1,0 +1,23 @@
+pipeline {
+agent { node { label 'master' } }
+
+stages {
+  stage('Build') {
+   steps {
+    node('master') {
+     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'myuser',
+     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+
+     sh 'echo uname=$USERNAME pwd=$PASSWORD'
+     }
+     withCredentials([file(credentialsId: 's_file', variable: 'sfile')]) {
+      sh "echo $sfile"
+      sh "cat $sfile"
+     }
+
+    }
+   }
+  }
+ }
+
+}
