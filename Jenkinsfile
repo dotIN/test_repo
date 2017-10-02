@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+              git 'https://github.com/dotIN/test_repo.git'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
