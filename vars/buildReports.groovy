@@ -11,7 +11,7 @@ def call(body) {
             echo "junit '**/build/reports/*.xml'"
             // Compress and store reports
             // Sync logs
-            echo "emailext attachmentsPattern: '**/cucumber-results-feature-overview.pdf', body: 'Attached report for ${BUILD_URL} [${JOB_NAME}] [${BUILD_NUMBER}]', subject: "Job '${JOB_NAME} [${BUILD_NUMBER}]'", to: 'test@email.com'" 
+            echo "emailext attachmentsPattern: '**/cucumber-results-feature-overview.pdf', body: 'Attached report for ${BUILD_URL} [${JOB_NAME}] [${BUILD_NUMBER}]', subject: '${JOB_NAME} [${BUILD_NUMBER}]', to: 'test@email.com'" 
             echo "Entering buildReports Global Lib"
     }
 }
