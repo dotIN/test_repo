@@ -8,13 +8,10 @@ def call(body) {
     // now build, based on the configuration provided
     node {
             echo "Entering buildReports Global Lib"
-            junit '**/build/reports/*.xml'
-	    echo "Junit Report"
-            step([$class: 'CucumberReportPublisher', failedFeaturesNumber: 0, failedScenariosNumber: 0, failedStepsNumber: 0, fileExcludePattern: '', fileIncludePattern: '**/testresult.json', jsonReportDirectory: '', pendingStepsNumber: 0, skippedStepsNumber: 0, undefinedStepsNumber: 0])
-            //step([$class: 'InfluxDbPublisher',customData: null,customDataMap: null,customPrefix: null,target: 'dpp reporting'])
+            echo "junit '**/build/reports/*.xml'"
             // Compress and store reports
             // Sync logs
-            emailext attachmentsPattern: '**/cucumber-results-feature-overview.pdf', body: "Attached report for ${BUILD_URL} [${JOB_NAME}] [${BUILD_NUMBER}]", subject: "Job '${JOB_NAME} [${BUILD_NUMBER}]'", to: 'test@email.com' 
+            echo "emailext attachmentsPattern: '**/cucumber-results-feature-overview.pdf', body: 'Attached report for ${BUILD_URL} [${JOB_NAME}] [${BUILD_NUMBER}]', subject: "Job '${JOB_NAME} [${BUILD_NUMBER}]'", to: 'test@email.com'" 
             echo "Entering buildReports Global Lib"
     }
 }
